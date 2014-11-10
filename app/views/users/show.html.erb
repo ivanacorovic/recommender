@@ -1,0 +1,43 @@
+<div class="col-sm-7">
+  <h2>User <%= link_to @user.name, @user %></h2>
+  <p>
+    <b>Review Count:</b> <%= @user.favorites.size %>
+  </p>
+  <h2>Recommended Products</h2>
+  <h3>Based on <a href="http://prediction.io/">PredictionIO</a></h3>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Product Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @recommendations.each do |recommendation| %>
+      <tr>
+        <td><%= recommendation[:product].id %></td>
+        <td><%= recommendation[:product].name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="col-sm-5">
+  <h3>Recently liked</h3>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Product Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @recent_favorites.each do |favorite| %>
+      <tr>
+        <td><%= favorite.id %></td>
+        <td><%= favorite.product.name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
